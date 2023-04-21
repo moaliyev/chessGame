@@ -8,7 +8,6 @@ global board, pk, ROW, COL
 ROW = 8
 COL = 8
 
-
 class Piece:
     """
     Initialize a Piece class for all chess pieces to inherit from
@@ -132,40 +131,40 @@ class Bishop(Piece):
 
     def check_move(self, row_dest: int, col_dest: int, row: int, col: int, *args, **kwargs) -> bool:
         possible_moves = set()
-        for i, j in zip(range(row, ROW), range(col, COL)):
+        for i, j in zip(range(row + 1, ROW), range(col + 1, COL)):
             if board[i][j] == " ":
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
             elif board[i][j].color != self.color:
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
                 break
             else:
                 break
-        for i, j in zip(range(row, ROW), range(col, COL, -1)):
+        for i, j in zip(range(row + 1, ROW), range(col - 1, -1, -1)):
             if board[i][j] == " ":
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
             elif board[i][j].color != self.color:
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
                 break
             else:
                 break
-        for i, j in zip(range(row, ROW, -1), range(col, COL)):
+        for i, j in zip(range(row - 1, -1, -1), range(col + 1, COL)):
             if board[i][j] == " ":
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
             elif board[i][j].color != self.color:
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
                 break
             else:
                 break
-        for i, j in zip(range(row, ROW, -1), range(col, COL, -1)):
+        for i, j in zip(range(row - 1, -1, -1), range(col - 1, -1, -1)):
             if board[i][j] == " ":
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
             elif board[i][j].color != self.color:
-                possible_moves.add(tuple(i, j))
+                possible_moves.add(tuple((i, j)))
                 break
             else:
                 break
         print(possible_moves)
-        if tuple(row_dest, col_dest) in possible_moves:
+        if tuple((row_dest, col_dest)) in possible_moves:
             return True
         return False
 
