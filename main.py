@@ -82,9 +82,9 @@ class Pawn(Piece):
 
 
 class Rock(Piece):
-    def __init__(self, color, symbol):
+    def __init__(self, color, symbol, *args, **kwargs):
         self.is_moved = False
-        super().__init__(color, symbol)
+        super().__init__(color, symbol, *args, **kwargs)
 
     def check_move(self, row_dest: int, col_dest: int, row: int, col: int, *args, **kwargs) -> bool:
         possible_moves = set()
@@ -127,7 +127,12 @@ class Rock(Piece):
 
 
 class Bishop(Piece):
-    pass
+    def __init__(self, color: str, symbol: str, *args, **kwargs):
+        super().__init__(color, symbol, *args, **kwargs)
+
+    def check_move(self, row_dest: int, col_dest: int, row: int, col: int, *args, **kwargs) -> bool:
+        possible_moves = set()
+        
 
 
 class Queen(Piece):
