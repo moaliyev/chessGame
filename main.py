@@ -132,7 +132,42 @@ class Bishop(Piece):
 
     def check_move(self, row_dest: int, col_dest: int, row: int, col: int, *args, **kwargs) -> bool:
         possible_moves = set()
-        
+        for i, j in zip(range(row, ROW), range(col, COL)):
+            if board[i][j] == " ":
+                possible_moves.add(tuple(i, j))
+            elif board[i][j].color != self.color:
+                possible_moves.add(tuple(i, j))
+                break
+            else:
+                break
+        for i, j in zip(range(row, ROW), range(col, COL, -1)):
+            if board[i][j] == " ":
+                possible_moves.add(tuple(i, j))
+            elif board[i][j].color != self.color:
+                possible_moves.add(tuple(i, j))
+                break
+            else:
+                break
+        for i, j in zip(range(row, ROW, -1), range(col, COL)):
+            if board[i][j] == " ":
+                possible_moves.add(tuple(i, j))
+            elif board[i][j].color != self.color:
+                possible_moves.add(tuple(i, j))
+                break
+            else:
+                break
+        for i, j in zip(range(row, ROW, -1), range(col, COL, -1)):
+            if board[i][j] == " ":
+                possible_moves.add(tuple(i, j))
+            elif board[i][j].color != self.color:
+                possible_moves.add(tuple(i, j))
+                break
+            else:
+                break
+        print(possible_moves)
+        if tuple(row_dest, col_dest) in possible_moves:
+            return True
+        return False
 
 
 class Queen(Piece):
