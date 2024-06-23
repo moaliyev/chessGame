@@ -11,7 +11,7 @@ import Piece from "../pieces/BasePiece";
 import Pawn from "../pieces/Pawn";
 
 // Images
-import WhitePawn from "../assets/images/white/pawn.jpeg";
+import WhitePawn from "../assets/images/white/pawn.webp";
 import BlackPawn from "../assets/images/black/pawn.webp";
 
 interface BoardState {
@@ -33,11 +33,20 @@ const useInitializeBoard = (): BoardState => {
       newBoard.push(newRow);
     }
 
-    const newRow: Pawn[] = [];
-    for (let i = 0; i < COLS; i++) {
-      newRow.push(new Pawn(Color.BLACK, BlackPawn, [1, i]));
+    {
+      const newRow: Pawn[] = [];
+      for (let i = 0; i < COLS; i++) {
+        newRow.push(new Pawn(Color.BLACK, BlackPawn, [1, i]));
+      }
+      newBoard[1] = newRow;
     }
-    newBoard[1] = newRow;
+    {
+      const newRow: Pawn[] = [];
+      for (let i = 0; i < COLS; i++) {
+        newRow.push(new Pawn(Color.WHITE, WhitePawn, [6, i]));
+      }
+      newBoard[6] = newRow;
+    }
 
     setBoard(newBoard);
   }, []);

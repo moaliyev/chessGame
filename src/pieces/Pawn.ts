@@ -32,13 +32,13 @@ export default class Pawn extends Piece {
         board[row + this.direction][column + this.direction]?.color ===
         (this.color === Color.BLACK ? Color.WHITE : Color.BLACK)
       )
-        possibleMoves.push([row, column + this.direction]);
+        possibleMoves.push([row + this.direction, column + this.direction]);
 
       if (
         board[row + this.direction][column - this.direction]?.color ===
         (this.color === Color.BLACK ? Color.WHITE : Color.BLACK)
       )
-        possibleMoves.push([row, column - this.direction]);
+        possibleMoves.push([row + this.direction, column - this.direction]);
     } catch (err) {
       console.log(err);
     }
