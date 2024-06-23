@@ -3,6 +3,7 @@
 }
 
 .green.active {
+    cursor: pointer;
     background-color: #B9CA43;
 }
 
@@ -11,6 +12,7 @@
 }
 
 .white.active {
+    cursor: pointer;
     background-color: #F5F682;
 }
 

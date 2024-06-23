@@ -6,6 +6,10 @@ export default interface IPiece {
   image: string;
   position: number[];
   direction: Direction;
-  getPossibleMoves: (board: Piece[][]) => number[][];
-  getAllMoves: (board: Piece[][]) => number[][];
+  getPossibleMoves: (board: (Piece | null)[][]) => number[][];
+  moveToSquare: (
+    board: (Piece | null)[][],
+    position: number[]
+  ) => (Piece | null)[][];
+  // getAllMoves: (board: (Piece | null)[][]) => number[][];
 }

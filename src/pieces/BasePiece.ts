@@ -15,7 +15,22 @@ export default abstract class Piece implements IPiece {
     this.direction = color === Color.BLACK ? Direction.DOWN : Direction.UP;
   }
 
-  getPossibleMoves = (board: Piece[][]): number[][] => [];
+  public abstract getPossibleMoves(board: (Piece | null)[][]): number[][];
 
-  getAllMoves = (board: Piece[][]): number[][] => [];
+  public moveToSquare = (
+    board: (Piece | null)[][],
+    position: number[]
+  ): (Piece | null)[][] => {
+    // Remove piece from the previous position
+    const newBoard: (Piece | null)[][] = [...board];
+    newBoard[this.position[0]][this.position[1]] = null;
+
+    // Add piece to the new position
+    this.position = position;
+    newBoard[position[0]][position[1]] = this;
+
+    return newBoard;
+  };
+
+  // public abstract getAllMoves(board: (Piece | null)[][]): number[][];
 }
