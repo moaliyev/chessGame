@@ -1,11 +1,10 @@
-import { Direction, Color } from "../enums";
-import Piece from "../pieces/BasePiece";
+import { Color } from "../enums";
+import Piece from "../pieces/Piece";
 
 export default interface IPiece {
   color: Color;
   image: string;
   position: number[];
-  direction: Direction;
   getPossibleMoves: (board: (Piece | null)[][]) => number[][];
   moveToSquare: (
     board: (Piece | null)[][],

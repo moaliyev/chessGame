@@ -1,4 +1,4 @@
-import { Color, Direction } from "../enums";
+import { Color } from "../enums";
 
 import IPiece from "../interfaces/IPiece";
 
@@ -6,13 +6,11 @@ export default abstract class Piece implements IPiece {
   color: Color;
   image: string;
   position: number[];
-  direction: Direction;
 
   constructor(color: Color, image: string, position: number[]) {
     this.color = color;
     this.image = image;
     this.position = position;
-    this.direction = color === Color.BLACK ? Direction.DOWN : Direction.UP;
   }
 
   public abstract getPossibleMoves(board: (Piece | null)[][]): number[][];

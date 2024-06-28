@@ -1,5 +1,5 @@
 import "../assets/css/Cell.css";
-import Piece from "../pieces/BasePiece";
+import Piece from "../pieces/Piece";
 
 const Cell: React.FC<PropType> = ({
   count,

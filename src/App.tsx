@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./assets/css/App.css";
 
 // Types
-import Piece from "./pieces/BasePiece";
+import Piece from "./pieces/Piece";
 
 // Components
 import Cell from "./components/Cell";

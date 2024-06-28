@@ -1,11 +1,14 @@
-import { Color } from "../enums";
-import Piece from "./BasePiece";
+import { Color, Direction } from "../enums";
+import Piece from "./Piece";
 
 export default class Pawn extends Piece {
   public isMoved: boolean;
+  public direction: Direction;
+
   constructor(color: Color, image: string, position: number[]) {
     super(color, image, position);
     this.isMoved = false;
+    this.direction = color === Color.BLACK ? Direction.DOWN : Direction.UP;
   }
 
   public override getPossibleMoves = (board: (Piece | null)[][]) => {
