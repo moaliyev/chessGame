@@ -19,6 +19,9 @@ import WhiteRock from "../assets/images/white/rock.png";
 import BlackRock from "../assets/images/black/rock.webp";
 import BlackBishop from "../assets/images/black/bishop.webp";
 import WhiteBishop from "../assets/images/white/bishop.webp";
+import BlackKnight from "../assets/images/black/knight.png";
+import WhiteKnight from "../assets/images/white/knight.png";
+import Knight from "../pieces/Knight";
 
 interface BoardState {
   board: (Piece | null)[][];
@@ -78,6 +81,17 @@ const useInitializeBoard = (): BoardState => {
     newBoard[ROWS - 1][COLS - 3] = new Bishop(Color.WHITE, WhiteBishop, [
       ROWS - 1,
       COLS - 3,
+    ]);
+
+    // Adding the black knights
+    newBoard[0][1] = new Knight(Color.BLACK, BlackKnight, [0, 1]);
+    newBoard[0][COLS - 2] = new Knight(Color.BLACK, BlackKnight, [0, COLS - 2]);
+
+    // ADding the white knights
+    newBoard[ROWS - 1][1] = new Knight(Color.WHITE, WhiteKnight, [ROWS - 1, 1]);
+    newBoard[ROWS - 1][COLS - 2] = new Knight(Color.WHITE, WhiteKnight, [
+      ROWS - 1,
+      COLS - 2,
     ]);
 
     setBoard(newBoard);
