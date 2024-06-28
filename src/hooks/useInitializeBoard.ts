@@ -25,6 +25,9 @@ import BlackKnight from "../assets/images/black/knight.png";
 import WhiteKnight from "../assets/images/white/knight.png";
 import BlackQueen from "../assets/images/black/queen.webp";
 import WhiteQueen from "../assets/images/white/queen.jpeg";
+import BlackKing from "../assets/images/black/king.jpeg";
+import WhiteKing from "../assets/images/white/king.webp";
+import King from "../pieces/King";
 
 interface BoardState {
   board: (Piece | null)[][];
@@ -102,6 +105,12 @@ const useInitializeBoard = (): BoardState => {
 
     // Adding the white queen
     newBoard[ROWS - 1][3] = new Queen(Color.WHITE, WhiteQueen, [ROWS - 1, 3]);
+
+    // Adding the black king
+    newBoard[0][4] = new King(Color.BLACK, BlackKing, [0, 4]);
+
+    // Adding the white king
+    newBoard[ROWS - 1][4] = new King(Color.WHITE, WhiteKing, [ROWS - 1, 4]);
 
     setBoard(newBoard);
   }, []);

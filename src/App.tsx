@@ -11,11 +11,13 @@ import Cell from "./components/Cell";
 
 // Custom hooks
 import useInitializeBoard from "./hooks/useInitializeBoard";
+import { Color } from "./enums";
 
 function App() {
   const { board, setBoard } = useInitializeBoard();
   const [activeMoves, setActiveMoves] = useState<number[][]>([]);
   const [activePiece, setActivePiece] = useState<Piece | null>();
+  const [user, setUser] = useState<Color>(Color.WHITE);
 
   const onMoveToSquare = (position: number[]) => {
     if (!activePiece) return;
@@ -26,6 +28,9 @@ function App() {
     // Update the board
     setBoard(newBoard);
 
+    // Change user
+    setUser(user === Color.WHITE ? Color.BLACK : Color.WHITE);
+
     // Return to default
     setActivePiece(null);
     setActiveMoves([]);
@@ -35,8 +40,10 @@ function App() {
     if (piece === null) {
       return;
     }
-    setActivePiece(piece);
-    setActiveMoves(piece.getPossibleMoves(board));
+    if (piece.color === user) {
+      setActivePiece(piece);
+      setActiveMoves(piece.getPossibleMoves(board));
+    }
   };
 
   return (
