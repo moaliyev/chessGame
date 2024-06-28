@@ -11,6 +11,8 @@ import Piece from "../pieces/Piece";
 import Pawn from "../pieces/Pawn";
 import Rock from "../pieces/Rock";
 import Bishop from "../pieces/Bishop";
+import Knight from "../pieces/Knight";
+import Queen from "../pieces/Queen";
 
 // Images
 import WhitePawn from "../assets/images/white/pawn.webp";
@@ -21,7 +23,8 @@ import BlackBishop from "../assets/images/black/bishop.webp";
 import WhiteBishop from "../assets/images/white/bishop.webp";
 import BlackKnight from "../assets/images/black/knight.png";
 import WhiteKnight from "../assets/images/white/knight.png";
-import Knight from "../pieces/Knight";
+import BlackQueen from "../assets/images/black/queen.webp";
+import WhiteQueen from "../assets/images/white/queen.jpeg";
 
 interface BoardState {
   board: (Piece | null)[][];
@@ -87,12 +90,18 @@ const useInitializeBoard = (): BoardState => {
     newBoard[0][1] = new Knight(Color.BLACK, BlackKnight, [0, 1]);
     newBoard[0][COLS - 2] = new Knight(Color.BLACK, BlackKnight, [0, COLS - 2]);
 
-    // ADding the white knights
+    // Adding the white knights
     newBoard[ROWS - 1][1] = new Knight(Color.WHITE, WhiteKnight, [ROWS - 1, 1]);
     newBoard[ROWS - 1][COLS - 2] = new Knight(Color.WHITE, WhiteKnight, [
       ROWS - 1,
       COLS - 2,
     ]);
+
+    // Adding the black queen
+    newBoard[0][3] = new Queen(Color.BLACK, BlackQueen, [0, 3]);
+
+    // Adding the white queen
+    newBoard[ROWS - 1][3] = new Queen(Color.WHITE, WhiteQueen, [ROWS - 1, 3]);
 
     setBoard(newBoard);
   }, []);
