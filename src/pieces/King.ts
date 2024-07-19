@@ -1,7 +1,6 @@
 import { Color } from "../enums";
-import { COLS } from "../utils/constants";
+import { COLS, ROWS } from "../utils/constants";
 import Piece from "./Piece";
-import { ROWS } from "./../utils/constants";
 
 export default class King extends Piece {
   constructor(color: Color, image: string, position: number[]) {
@@ -53,6 +52,15 @@ export default class King extends Piece {
     rowIndex = this.position[0] + 1;
     colIndex = this.position[1] - 1;
     if (rowIndex < ROWS && colIndex >= 0) {
+      currentPiece = board[rowIndex][colIndex];
+      if (!currentPiece || currentPiece?.color !== this.color)
+        possibleMoves.push([rowIndex, colIndex]);
+    }
+
+    // Check bottom
+    rowIndex = this.position[0] + 1;
+    colIndex = this.position[1];
+    if (rowIndex < ROWS) {
       currentPiece = board[rowIndex][colIndex];
       if (!currentPiece || currentPiece?.color !== this.color)
         possibleMoves.push([rowIndex, colIndex]);

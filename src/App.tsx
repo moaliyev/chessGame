@@ -12,6 +12,7 @@ import Cell from "./components/Cell";
 // Custom hooks
 import useInitializeBoard from "./hooks/useInitializeBoard";
 import { Color } from "./enums";
+import validateMove from "./utils/validateMove";
 
 function App() {
   const { board, setBoard } = useInitializeBoard();
@@ -36,13 +37,23 @@ function App() {
     setActiveMoves([]);
   };
 
-  const onPieceClick = (piece: Piece | null): void => {
+  const handlePieceClick = (piece: Piece | null): void => {
     if (piece === null) {
       return;
     }
     if (piece.color === user) {
       setActivePiece(piece);
-      setActiveMoves(piece.getPossibleMoves(board));
+
+      const possibleMoves: number[][] = piece.getPossibleMoves(board);
+      const validatedMoves: number[][] = [];
+
+      const boardCopy: (Piece | null)[][] = [...board];
+
+      for (const position of possibleMoves) {
+        if (validateMove(piece.position, boardCopy, user))
+          validatedMoves.push(position);
+      }
+      setActiveMoves(validatedMoves);
     }
   };
 
@@ -61,7 +72,7 @@ function App() {
                 )
               )}
               piece={piece ?? undefined}
-              handleClick={onPieceClick}
+              handleClick={handlePieceClick}
               handleMove={onMoveToSquare}
             />
           ))
