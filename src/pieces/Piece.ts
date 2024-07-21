@@ -29,6 +29,4 @@ export default abstract class Piece implements IPiece {
 
     return newBoard;
   };
-
-  // public abstract getAllMoves(board: (Piece | null)[][]): number[][];
 }

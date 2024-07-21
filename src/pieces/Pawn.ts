@@ -5,9 +5,14 @@ export default class Pawn extends Piece {
   public isMoved: boolean;
   public direction: Direction;
 
-  constructor(color: Color, image: string, position: number[]) {
+  constructor(
+    color: Color,
+    image: string,
+    position: number[],
+    isMoved: boolean = false
+  ) {
     super(color, image, position);
-    this.isMoved = false;
+    this.isMoved = isMoved;
     this.direction = color === Color.BLACK ? Direction.DOWN : Direction.UP;
   }
 

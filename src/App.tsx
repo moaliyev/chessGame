@@ -5,14 +5,17 @@ import "./assets/css/App.css";
 
 // Types
 import Piece from "./pieces/Piece";
+import { Color } from "./enums";
 
 // Components
 import Cell from "./components/Cell";
 
 // Custom hooks
 import useInitializeBoard from "./hooks/useInitializeBoard";
-import { Color } from "./enums";
+
+// Utils
 import validateMove from "./utils/validateMove";
+import copyBoard from "./utils/copyBoard";
 
 function App() {
   const { board, setBoard } = useInitializeBoard();
@@ -38,21 +41,20 @@ function App() {
   };
 
   const handlePieceClick = (piece: Piece | null): void => {
-    if (piece === null) {
-      return;
-    }
+    if (piece === null) return;
+
     if (piece.color === user) {
       setActivePiece(piece);
 
-      const possibleMoves: number[][] = piece.getPossibleMoves(board);
-      const validatedMoves: number[][] = [];
+      // const boardCopy: (Piece | null)[][] = copyBoard(board);
 
-      const boardCopy: (Piece | null)[][] = [...board];
+      const validatedMoves: number[][] = validateMove(
+        piece.position,
+        // boardCopy,
+        board,
+        user
+      );
 
-      for (const position of possibleMoves) {
-        if (validateMove(piece.position, boardCopy, user))
-          validatedMoves.push(position);
-      }
       setActiveMoves(validatedMoves);
     }
   };

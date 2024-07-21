@@ -1,19 +1,34 @@
 import { Color } from "../enums";
 import King from "../pieces/King";
-import Pawn from "../pieces/Pawn";
+// import Pawn from "../pieces/Pawn";
 import Piece from "../pieces/Piece";
+import copyBoard from "./copyBoard";
 
 function validateMove(
   originalPosition: number[],
   board: (Piece | null)[][],
   currentUser: Color
-): boolean {
-  const piece: Piece | null = board[originalPosition[0]][originalPosition[1]];
+): number[][] {
+  let piece: Piece | null = board[originalPosition[0]][originalPosition[1]];
+  let validatedMoves: number[][] = [];
+
   if (piece) {
+    validatedMoves = piece.getPossibleMoves(board);
+
     var currentKing: King | null = null;
     const possibleMoves: number[][] = piece.getPossibleMoves(board);
+
     for (const move of possibleMoves) {
-      const newBoard: (Piece | null)[][] = piece.moveToSquare(board, move);
+      // Copy of the actual board
+      const replicaBoard: (Piece | null)[][] = copyBoard(board);
+      piece = replicaBoard[originalPosition[0]][originalPosition[1]];
+      if (!piece) return [];
+      // Board after the piece is moved to the specified square
+      const newBoard: (Piece | null)[][] = piece.moveToSquare(
+        replicaBoard,
+        move
+      );
+
       // Finding the position of king
       for (const row of newBoard) {
         for (const piece of row) {
@@ -23,8 +38,10 @@ function validateMove(
           }
         }
       }
-      const possibleOppositionMoves: number[][][] = [];
+
       // Getting all the possible moves of the opposition pieces
+      const possibleOppositionMoves: number[][][] = [];
+
       for (const row of newBoard) {
         for (const piece of row) {
           if (piece?.color !== currentUser && piece) {
@@ -32,34 +49,23 @@ function validateMove(
           }
         }
       }
-      const isMoved: boolean = piece instanceof Pawn ? piece.isMoved : false;
-      if (currentKing)
+      if (currentKing) {
         for (const row of possibleOppositionMoves) {
           for (const position of row) {
             if (
               position[0] === currentKing.position[0] &&
               position[1] === currentKing.position[1]
             ) {
-              piece.moveToSquare(board, originalPosition);
-              if (piece instanceof Pawn) {
-                piece.isMoved = isMoved;
-              }
-              return false;
+              validatedMoves = validatedMoves.filter(
+                m => m[0] !== move[0] || m[1] !== move[1]
+              );
             }
           }
         }
-      piece.moveToSquare(board, originalPosition);
-      if (piece instanceof Pawn) {
-        piece.isMoved = isMoved;
       }
-      return true;
     }
-    if (piece instanceof Pawn) {
-      piece.isMoved = false;
-    }
-    return true;
   }
-  return true;
+  return validatedMoves;
 }
 
 export default validateMove;
