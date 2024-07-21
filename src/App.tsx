@@ -1,4 +1,5 @@
-import { useState } from "react";
+// Hooks
+import { useEffect, useState } from "react";
 
 // CSS
 import "./assets/css/App.css";
@@ -15,13 +16,19 @@ import useInitializeBoard from "./hooks/useInitializeBoard";
 
 // Utils
 import validateMove from "./utils/validateMove";
-import copyBoard from "./utils/copyBoard";
+import checkWin from "./utils/checkWin";
+// import copyBoard from "./utils/copyBoard";
 
 function App() {
   const { board, setBoard } = useInitializeBoard();
   const [activeMoves, setActiveMoves] = useState<number[][]>([]);
   const [activePiece, setActivePiece] = useState<Piece | null>();
+  const [isWin, setIsWin] = useState<boolean>();
   const [user, setUser] = useState<Color>(Color.WHITE);
+
+  useEffect(() => {
+    if (checkWin(board, user)) setIsWin(true);
+  }, [user]);
 
   const onMoveToSquare = (position: number[]) => {
     if (!activePiece) return;
@@ -61,6 +68,16 @@ function App() {
 
   return (
     <>
+      {isWin ? (
+        <div className="modal">
+          <div className="content">
+            <h3 className="title">End!</h3>
+            <p>{user === Color.BLACK ? "White" : "Black"} won!</p>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="container">
         {board.map((row, firstIndex) =>
           row.map((piece, secondIndex) => (

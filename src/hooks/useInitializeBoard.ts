@@ -1,3 +1,4 @@
+// Hooks
 import { useEffect, useState } from "react";
 
 // Constants
@@ -13,6 +14,7 @@ import Rock from "../pieces/Rock";
 import Bishop from "../pieces/Bishop";
 import Knight from "../pieces/Knight";
 import Queen from "../pieces/Queen";
+import King from "../pieces/King";
 
 // Images
 import WhitePawn from "../assets/images/white/pawn.webp";
@@ -27,7 +29,6 @@ import BlackQueen from "../assets/images/black/queen.webp";
 import WhiteQueen from "../assets/images/white/queen.jpeg";
 import BlackKing from "../assets/images/black/king.jpeg";
 import WhiteKing from "../assets/images/white/king.webp";
-import King from "../pieces/King";
 
 interface BoardState {
   board: (Piece | null)[][];

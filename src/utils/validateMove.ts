@@ -1,10 +1,12 @@
+// Types
 import { Color } from "../enums";
 import King from "../pieces/King";
-// import Pawn from "../pieces/Pawn";
 import Piece from "../pieces/Piece";
+
+// Utils
 import copyBoard from "./copyBoard";
 
-function validateMove(
+export default function (
   originalPosition: number[],
   board: (Piece | null)[][],
   currentUser: Color
@@ -67,5 +69,3 @@ function validateMove(
   }
   return validatedMoves;
 }
-
-export default validateMove;

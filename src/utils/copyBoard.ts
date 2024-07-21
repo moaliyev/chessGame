@@ -25,6 +25,5 @@ export default function (board: (Piece | null)[][]): (Piece | null)[][] {
     }
     boardCopy.push(newRow);
   }
-
   return boardCopy;
 }
