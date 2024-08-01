@@ -1,6 +1,6 @@
 // Types
 import { Color } from "../enums";
-import Piece from "../pieces/Piece";
+import { Piece } from "../pieces";
 
 // utils
 import validateMove from "./validateMove";

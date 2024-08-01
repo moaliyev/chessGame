@@ -1,7 +1,6 @@
 // Types
 import { Color } from "../enums";
-import King from "../pieces/King";
-import Piece from "../pieces/Piece";
+import { King, Piece } from "../pieces";
 
 // Utils
 import copyBoard from "./copyBoard";

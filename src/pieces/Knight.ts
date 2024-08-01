@@ -7,17 +7,6 @@ export default class Knight extends Piece {
     super(color, image, position);
   }
 
-  private checkSquareAndAddToPossibleMoves(
-    board: (Piece | null)[][],
-    rowIndex: number,
-    colIndex: number,
-    possibleMoves: number[][]
-  ): void {
-    const currentPiece: Piece | null = board[rowIndex][colIndex];
-    if (currentPiece?.color !== this.color || !currentPiece)
-      possibleMoves.push([rowIndex, colIndex]);
-  }
-
   public getPossibleMoves(board: (Piece | null)[][]): number[][] {
     const possibleMoves: number[][] = [];
     let rowIndex: number;

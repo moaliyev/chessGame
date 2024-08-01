@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import "./assets/css/App.css";
 
 // Types
-import Piece from "./pieces/Piece";
+import { Piece } from "./pieces";
 import { Color } from "./enums";
 
 // Components
@@ -17,7 +17,6 @@ import useInitializeBoard from "./hooks/useInitializeBoard";
 // Utils
 import validateMove from "./utils/validateMove";
 import checkWin from "./utils/checkWin";
-// import copyBoard from "./utils/copyBoard";
 
 function App() {
   const { board, setBoard } = useInitializeBoard();
@@ -53,11 +52,8 @@ function App() {
     if (piece.color === user) {
       setActivePiece(piece);
 
-      // const boardCopy: (Piece | null)[][] = copyBoard(board);
-
       const validatedMoves: number[][] = validateMove(
         piece.position,
-        // boardCopy,
         board,
         user
       );
