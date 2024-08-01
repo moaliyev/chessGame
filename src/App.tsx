@@ -1,5 +1,6 @@
 // Hooks
 import { useEffect, useState } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // CSS
 import "./assets/css/App.css";
@@ -64,6 +65,7 @@ function App() {
 
   return (
     <>
+      <SpeedInsights />
       {isWin ? (
         <div className="modal">
           <div className="content">
