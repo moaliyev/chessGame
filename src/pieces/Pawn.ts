@@ -28,7 +28,10 @@ export default class Pawn extends Piece {
         possibleMoves.push([row + this.direction, column]);
 
       if (!this.isMoved)
-        if (!board[row + 2 * this.direction][column])
+        if (
+          !board[row + 2 * this.direction][column] &&
+          !board[row + this.direction][column]
+        )
           possibleMoves.push([row + 2 * this.direction, column]);
     } catch (err) {
       console.log(err);
@@ -54,7 +57,7 @@ export default class Pawn extends Piece {
     return possibleMoves;
   };
 
-  public moveToSquare = (
+  public override moveToSquare = (
     board: (Piece | null)[][],
     position: number[]
   ): (Piece | null)[][] => {

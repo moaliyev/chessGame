@@ -1,6 +1,7 @@
 // Types
 import { Color, GameStatus } from "../enums";
 import { King, Piece } from "../pieces";
+import getPossibleOppositionMoves from "./getPossibleOppositionMoves";
 
 // utils
 import validateMove from "./validateMove";
@@ -33,15 +34,10 @@ export default function (
     }
   }
 
-  const possibleOppositionMoves: number[][][] = [];
-
-  for (const row of board) {
-    for (const piece of row) {
-      if (piece?.color !== currentUser && piece) {
-        possibleOppositionMoves.push(piece.getPossibleMoves(board));
-      }
-    }
-  }
+  const possibleOppositionMoves: number[][][] = getPossibleOppositionMoves(
+    board,
+    currentUser
+  );
 
   if (currentKing) {
     for (const row of possibleOppositionMoves) {

@@ -3,6 +3,8 @@ import { Color } from "../enums";
 import { COLS, ROWS } from "../utils/constants";
 
 export default class Rock extends Piece {
+  public isMoved: boolean = false;
+
   constructor(color: Color, image: string, position: number[]) {
     super(color, image, position);
   }
@@ -53,4 +55,22 @@ export default class Rock extends Piece {
 
     return possibleMoves;
   }
+
+  public override moveToSquare = (
+    board: (Piece | null)[][],
+    position: number[]
+  ): (Piece | null)[][] => {
+    // Mark this rock as moved so that it cannot be used for kisa rok kanki
+    this.isMoved = true;
+
+    // Remove piece from the previous position
+    const newBoard: (Piece | null)[][] = [...board];
+    newBoard[this.position[0]][this.position[1]] = null;
+
+    // Add piece to the new position
+    this.position = position;
+    newBoard[position[0]][position[1]] = this;
+
+    return newBoard;
+  };
 }
