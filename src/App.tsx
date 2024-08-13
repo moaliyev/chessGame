@@ -7,7 +7,7 @@ import "./assets/css/App.css";
 
 // Types
 import { Piece } from "./pieces";
-import { Color } from "./enums";
+import { Color, GameStatus } from "./enums";
 
 // Components
 import Cell from "./components/Cell";
@@ -17,17 +17,17 @@ import useInitializeBoard from "./hooks/useInitializeBoard";
 
 // Utils
 import validateMove from "./utils/validateMove";
-import checkWin from "./utils/checkWin";
+import checkEnd from "./utils/checkEnd";
 
 function App() {
   const { board, setBoard } = useInitializeBoard();
   const [activeMoves, setActiveMoves] = useState<number[][]>([]);
   const [activePiece, setActivePiece] = useState<Piece | null>();
-  const [isWin, setIsWin] = useState<boolean>();
+  const [isEnd, setIsEnd] = useState<GameStatus>(GameStatus.ONGOING);
   const [user, setUser] = useState<Color>(Color.WHITE);
 
   useEffect(() => {
-    if (checkWin(board, user)) setIsWin(true);
+    setIsEnd(checkEnd(board, user));
   }, [user]);
 
   const onMoveToSquare = (position: number[]) => {
@@ -66,7 +66,7 @@ function App() {
   return (
     <>
       <SpeedInsights />
-      {isWin ? (
+      {isEnd === GameStatus.END ? (
         <div className="modal">
           <div className="content">
             <h3 className="title">End!</h3>
