@@ -10,7 +10,7 @@ import { Color } from "../enums";
 // Pieces
 import Piece from "../pieces/Piece";
 import Pawn from "../pieces/Pawn";
-import Rock from "../pieces/Rock";
+import Rook from "../pieces/Rook";
 import Bishop from "../pieces/Bishop";
 import Knight from "../pieces/Knight";
 import Queen from "../pieces/Queen";
@@ -19,15 +19,15 @@ import King from "../pieces/King";
 // Images
 import WhitePawn from "../assets/images/white/pawn.webp";
 import BlackPawn from "../assets/images/black/pawn.webp";
-import WhiteRock from "../assets/images/white/rock.png";
-import BlackRock from "../assets/images/black/rock.webp";
+import WhiteRook from "../assets/images/white/rook.webp";
+import BlackRook from "../assets/images/black/rook.webp";
 import BlackBishop from "../assets/images/black/bishop.webp";
 import WhiteBishop from "../assets/images/white/bishop.webp";
-import BlackKnight from "../assets/images/black/knight.png";
-import WhiteKnight from "../assets/images/white/knight.png";
+import BlackKnight from "../assets/images/black/knight.webp";
+import WhiteKnight from "../assets/images/white/knight.webp";
 import BlackQueen from "../assets/images/black/queen.webp";
-import WhiteQueen from "../assets/images/white/queen.jpeg";
-import BlackKing from "../assets/images/black/king.jpeg";
+import WhiteQueen from "../assets/images/white/queen.webp";
+import BlackKing from "../assets/images/black/king.webp";
 import WhiteKing from "../assets/images/white/king.webp";
 
 interface BoardState {
@@ -68,13 +68,13 @@ const useInitializeBoard = (): BoardState => {
       newBoard[6] = newRow;
     }
 
-    // Adding the black Rocks
-    newBoard[0][0] = new Rock(Color.BLACK, BlackRock, [0, 0]);
-    newBoard[0][COLS - 1] = new Rock(Color.BLACK, BlackRock, [0, COLS - 1]);
+    // Adding the black Rooks
+    newBoard[0][0] = new Rook(Color.BLACK, BlackRook, [0, 0]);
+    newBoard[0][COLS - 1] = new Rook(Color.BLACK, BlackRook, [0, COLS - 1]);
 
-    // Adding the white Rocks
-    newBoard[ROWS - 1][0] = new Rock(Color.WHITE, WhiteRock, [ROWS - 1, 0]);
-    newBoard[ROWS - 1][COLS - 1] = new Rock(Color.WHITE, WhiteRock, [
+    // Adding the white Rooks
+    newBoard[ROWS - 1][0] = new Rook(Color.WHITE, WhiteRook, [ROWS - 1, 0]);
+    newBoard[ROWS - 1][COLS - 1] = new Rook(Color.WHITE, WhiteRook, [
       ROWS - 1,
       COLS - 1,
     ]);

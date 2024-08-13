@@ -2,7 +2,7 @@ import Piece from "./Piece";
 import { Color } from "../enums";
 import { COLS, ROWS } from "../utils/constants";
 
-export default class Rock extends Piece {
+export default class Rook extends Piece {
   public isMoved: boolean = false;
 
   constructor(color: Color, image: string, position: number[]) {
@@ -60,7 +60,7 @@ export default class Rock extends Piece {
     board: (Piece | null)[][],
     position: number[]
   ): (Piece | null)[][] => {
-    // Mark this rock as moved so that it cannot be used for kisa rok kanki
+    // Mark this rook as moved so that it cannot be used for kisa rok kanki
     this.isMoved = true;
 
     // Remove piece from the previous position

@@ -1,4 +1,4 @@
-import { Bishop, King, Knight, Pawn, Piece, Queen, Rock } from "../pieces";
+import { Bishop, King, Knight, Pawn, Piece, Queen, Rook } from "../pieces";
 
 export default function (board: (Piece | null)[][]): (Piece | null)[][] {
   const boardCopy: (Piece | null)[][] = [];
@@ -13,8 +13,8 @@ export default function (board: (Piece | null)[][]): (Piece | null)[][] {
         );
       } else if (piece instanceof Knight) {
         newRow.push(new Knight(piece.color, piece.image, piece.position));
-      } else if (piece instanceof Rock) {
-        newRow.push(new Rock(piece.color, piece.image, piece.position));
+      } else if (piece instanceof Rook) {
+        newRow.push(new Rook(piece.color, piece.image, piece.position));
       } else if (piece instanceof King) {
         newRow.push(new King(piece.color, piece.image, piece.position));
       } else if (piece instanceof Bishop) {

@@ -4,6 +4,6 @@ import Knight from "./Knight";
 import Pawn from "./Pawn";
 import Piece from "./Piece";
 import Queen from "./Queen";
-import Rock from "./Rock";
+import Rook from "./Rook";
 
-export { Bishop, King, Knight, Pawn, Piece, Queen, Rock };
+export { Bishop, King, Knight, Pawn, Piece, Queen, Rook };

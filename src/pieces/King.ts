@@ -2,7 +2,7 @@ import { Color } from "../enums";
 import { COLS, ROWS } from "../utils/constants";
 import getPossibleOppositionMoves from "../utils/getPossibleOppositionMoves";
 import Piece from "./Piece";
-import Rock from "./Rock";
+import Rook from "./Rook";
 
 export default class King extends Piece {
   public isMoved: boolean = false;
@@ -95,8 +95,8 @@ export default class King extends Piece {
       // WHITE LONG CASTLE
       if (
         this.color === Color.WHITE &&
-        board[ROWS - 1][0] instanceof Rock &&
-        !(board[ROWS - 1][0] as Rock).isMoved &&
+        board[ROWS - 1][0] instanceof Rook &&
+        !(board[ROWS - 1][0] as Rook).isMoved &&
         board[ROWS - 1][1] === null &&
         board[ROWS - 1][2] === null &&
         board[ROWS - 1][3] === null
@@ -127,8 +127,8 @@ export default class King extends Piece {
       // WHITE SHORT CASTLE
       if (
         this.color === Color.WHITE &&
-        board[ROWS - 1][COLS - 1] instanceof Rock &&
-        !(board[ROWS - 1][COLS - 1] as Rock).isMoved &&
+        board[ROWS - 1][COLS - 1] instanceof Rook &&
+        !(board[ROWS - 1][COLS - 1] as Rook).isMoved &&
         board[ROWS - 1][COLS - 2] === null &&
         board[ROWS - 1][COLS - 3] === null
       ) {
@@ -158,8 +158,8 @@ export default class King extends Piece {
       // BLACK LONG CASTLE
       if (
         this.color === Color.BLACK &&
-        board[0][0] instanceof Rock &&
-        !(board[0][0] as Rock).isMoved &&
+        board[0][0] instanceof Rook &&
+        !(board[0][0] as Rook).isMoved &&
         board[0][1] === null &&
         board[0][2] === null &&
         board[0][3] === null
@@ -190,8 +190,8 @@ export default class King extends Piece {
       // BLACK SHORT CASTLE
       if (
         this.color === Color.BLACK &&
-        board[0][COLS - 1] instanceof Rock &&
-        !(board[0][COLS - 1] as Rock).isMoved &&
+        board[0][COLS - 1] instanceof Rook &&
+        !(board[0][COLS - 1] as Rook).isMoved &&
         board[0][COLS - 2] === null &&
         board[0][COLS - 3] === null
       ) {
@@ -235,11 +235,11 @@ export default class King extends Piece {
       newBoard[ROWS - 1][2] = this;
       this.isMoved = true;
 
-      const rock: Rock = newBoard[ROWS - 1][0] as Rock;
-      rock.position = [ROWS - 1, 3];
-      newBoard[ROWS - 1][3] = rock;
+      const rook: Rook = newBoard[ROWS - 1][0] as Rook;
+      rook.position = [ROWS - 1, 3];
+      newBoard[ROWS - 1][3] = rook;
       newBoard[ROWS - 1][0] = null;
-      rock.isMoved = true;
+      rook.isMoved = true;
       return newBoard;
     }
 
@@ -250,11 +250,11 @@ export default class King extends Piece {
       newBoard[ROWS - 1][COLS - 2] = this;
       this.isMoved = true;
 
-      const rock: Rock = newBoard[ROWS - 1][COLS - 1] as Rock;
-      rock.position = [ROWS - 1, COLS - 3];
-      newBoard[ROWS - 1][COLS - 3] = rock;
+      const rook: Rook = newBoard[ROWS - 1][COLS - 1] as Rook;
+      rook.position = [ROWS - 1, COLS - 3];
+      newBoard[ROWS - 1][COLS - 3] = rook;
       newBoard[ROWS - 1][COLS - 1] = null;
-      rock.isMoved = true;
+      rook.isMoved = true;
       return newBoard;
     }
 
@@ -265,11 +265,11 @@ export default class King extends Piece {
       newBoard[0][2] = this;
       this.isMoved = true;
 
-      const rock: Rock = newBoard[0][0] as Rock;
-      rock.position = [0, 3];
-      newBoard[0][3] = rock;
+      const rook: Rook = newBoard[0][0] as Rook;
+      rook.position = [0, 3];
+      newBoard[0][3] = rook;
       newBoard[0][0] = null;
-      rock.isMoved = true;
+      rook.isMoved = true;
       return newBoard;
     }
 
@@ -280,11 +280,11 @@ export default class King extends Piece {
       newBoard[0][COLS - 2] = this;
       this.isMoved = true;
 
-      const rock: Rock = newBoard[0][COLS - 1] as Rock;
-      rock.position = [0, COLS - 3];
-      newBoard[0][COLS - 3] = rock;
+      const rook: Rook = newBoard[0][COLS - 1] as Rook;
+      rook.position = [0, COLS - 3];
+      newBoard[0][COLS - 3] = rook;
       newBoard[0][COLS - 1] = null;
-      rock.isMoved = true;
+      rook.isMoved = true;
       return newBoard;
     }
 
