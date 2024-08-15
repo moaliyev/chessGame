@@ -5,9 +5,15 @@ import Piece from "./Piece";
 import Rook from "./Rook";
 
 export default class King extends Piece {
-  public isMoved: boolean = false;
-  constructor(color: Color, image: string, position: number[]) {
+  public isMoved: boolean;
+  constructor(
+    color: Color,
+    image: string,
+    position: number[],
+    isMoved: boolean = false
+  ) {
     super(color, image, position);
+    this.isMoved = isMoved;
   }
   public getPossibleMoves(board: (Piece | null)[][]): number[][] {
     const possibleMoves: number[][] = [];
@@ -247,8 +253,8 @@ export default class King extends Piece {
     if (position[0] === ROWS - 1 && position[1] === COLS - 1 && !this.isMoved) {
       newBoard[this.position[0]][this.position[1]] = null;
       this.position = [ROWS - 1, COLS - 2];
-      newBoard[ROWS - 1][COLS - 2] = this;
       this.isMoved = true;
+      newBoard[ROWS - 1][COLS - 2] = this;
 
       const rook: Rook = newBoard[ROWS - 1][COLS - 1] as Rook;
       rook.position = [ROWS - 1, COLS - 3];
@@ -293,9 +299,9 @@ export default class King extends Piece {
 
     // Add piece to the new position
     this.position = position;
+    this.isMoved = true;
     newBoard[position[0]][position[1]] = this;
 
-    this.isMoved = true;
     return newBoard;
   };
 }

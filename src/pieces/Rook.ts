@@ -3,10 +3,16 @@ import { Color } from "../enums";
 import { COLS, ROWS } from "../utils/constants";
 
 export default class Rook extends Piece {
-  public isMoved: boolean = false;
+  public isMoved: boolean;
 
-  constructor(color: Color, image: string, position: number[]) {
+  constructor(
+    color: Color,
+    image: string,
+    position: number[],
+    isMoved: boolean
+  ) {
     super(color, image, position);
+    this.isMoved = isMoved;
   }
   public getPossibleMoves(board: (Piece | null)[][]): number[][] {
     const possibleMoves: number[][] = [];

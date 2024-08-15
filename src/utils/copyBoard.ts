@@ -14,9 +14,13 @@ export default function (board: (Piece | null)[][]): (Piece | null)[][] {
       } else if (piece instanceof Knight) {
         newRow.push(new Knight(piece.color, piece.image, piece.position));
       } else if (piece instanceof Rook) {
-        newRow.push(new Rook(piece.color, piece.image, piece.position));
+        newRow.push(
+          new Rook(piece.color, piece.image, piece.position, piece.isMoved)
+        );
       } else if (piece instanceof King) {
-        newRow.push(new King(piece.color, piece.image, piece.position));
+        newRow.push(
+          new King(piece.color, piece.image, piece.position, piece.isMoved)
+        );
       } else if (piece instanceof Bishop) {
         newRow.push(new Bishop(piece.color, piece.image, piece.position));
       } else if (piece instanceof Queen) {

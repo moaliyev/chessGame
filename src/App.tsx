@@ -75,6 +75,13 @@ function App() {
             <p>{user === Color.BLACK ? "White" : "Black"} won!</p>
           </div>
         </div>
+      ) : isEnd === GameStatus.DRAW ? (
+        <div className="modal">
+          <div className="content">
+            <h3 className="title">End!</h3>
+            <p>It's a draw</p>
+          </div>
+        </div>
       ) : (
         ""
       )}

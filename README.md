@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# Chess Game in React + TypeScript
 
 A simple chess game designed to be played by two players locally.
 
