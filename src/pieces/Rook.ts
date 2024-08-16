@@ -9,7 +9,7 @@ export default class Rook extends Piece {
     color: Color,
     image: string,
     position: number[],
-    isMoved: boolean
+    isMoved: boolean = false
   ) {
     super(color, image, position);
     this.isMoved = isMoved;
