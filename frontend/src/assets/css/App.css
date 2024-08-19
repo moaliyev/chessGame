@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", system-ui;
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #302E2B;
+}
+
+.container {
+    width: min-content;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin: 0 auto;
+}
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000050;
+    z-index: 9;
+}
+
+.modal .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #779556;
+    padding: 24px 50px;
+    border-radius: 10px;
+}
+
+.modal .content .title {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+}
+
+.modal .content p {
+    font-size: 24px;
+    color: #fff;
+}
+
+
+.loginContainer {
+    .title {
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+    color: #fff;
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .inputController {
+        display: flex;
+        flex-direction: column;
+        input {
+            padding: 8px 10px;
+            border-radius: 2px;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            color: #CBCBCA;
+            background-color: #454341;
+        }
+    }
+    button {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background-color: #81B64C;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 700;
+        box-shadow: 0px 4px 2px 0px rgba(93,153,72,1);
+        transition: all .15s ease;
+        &:hover:not(:disabled) {
+            transform: translateY(2px);
+            background-color: #A1D05F;
+            box-shadow: none;
+        }
+        &:disabled {
+            background-color: #a5be82;
+            box-shadow: 0px 4px 2px 0px #a5be82;
+        }
+    }
+}
+
+.gameLink {
+    color: #e1c229;
+    cursor: pointer;
+}
+
+
+.heroContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    .title {
+        font-size: 24px;
+        color: #fff;
+    }
+}
+
+.createRoom {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: none;
+    background-color: #81B64C;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    box-shadow: 0px 4px 2px 0px rgba(93,153,72,1);
+    transition: all .15s ease;
+    &:hover:not(:disabled) {
+        transform: translateY(2px);
+        background-color: #A1D05F;
+        box-shadow: none;
+    }
+    &:disabled {
+        background-color: #a5be82;
+        box-shadow: 0px 4px 2px 0px #a5be82;
+    }
+}
