@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
@@ -38,11 +38,11 @@ app.use(express.static("public")); // serve static files
 app.use("/api/room", roomRouter);
 app.use("/api/auth", authRouter);
 
-app.use("/", () => {
-  console.log("hello");
+app.use("/", (req: Request, res: Response) => {
+  res.send("Salam");
 });
 
-server.listen(5000, () => {
+server.listen(3000, () => {
   connectToMongoDB();
   console.log("Server running on 5000");
 });
