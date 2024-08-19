@@ -38,6 +38,10 @@ app.use(express.static("public")); // serve static files
 app.use("/api/room", roomRouter);
 app.use("/api/auth", authRouter);
 
+app.use("/", () => {
+  console.log("hello");
+});
+
 server.listen(5000, () => {
   connectToMongoDB();
   console.log("Server running on 5000");
