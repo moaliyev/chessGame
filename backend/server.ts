@@ -18,12 +18,12 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "chess-game-front.vercel.app"],
+    origin: ["http://localhost:5173", "https://chess-game-front.vercel.app"],
   },
 });
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "chess-game-front.vercel.app"],
+  origin: ["http://localhost:5173", "https://chess-game-front.vercel.app"],
   optionsSuccessStatus: 200,
   credentials: true,
 };
