@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Room from "./../models/room.model";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model";
-import { getReceiverSocketId, io } from "../server";
+import { getReceiverSocketId, io } from "..";
 
 export class RoomController {
   public static async createRoomController(req: Request, res: Response) {
