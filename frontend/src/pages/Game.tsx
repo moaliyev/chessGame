@@ -54,9 +54,12 @@ const Game = () => {
             isActive: boolean;
             activeUser: string;
           };
-        } = await axios.get(`http://localhost:5000/api/room/${roomId}`, {
-          withCredentials: true,
-        });
+        } = await axios.get(
+          `https://chess-game-five-eta.vercel.app/api/room/${roomId}`,
+          {
+            withCredentials: true,
+          }
+        );
         setGameData(data);
         if (
           data.black !== authUser.user._id ||
@@ -81,7 +84,7 @@ const Game = () => {
 
   useEffect(() => {
     if (authUser?.user?._id) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://chess-game-five-eta.vercel.app", {
         query: {
           userId: authUser.user._id,
         },

@@ -12,7 +12,7 @@ const Home = () => {
     setIsLoading(true);
     try {
       const { data }: { data: string } = await axios.post(
-        "http://localhost:5000/api/room",
+        "https://chess-game-five-eta.vercel.app/api/room",
         {},
         { withCredentials: true }
       );

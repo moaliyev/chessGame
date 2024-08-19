@@ -17,7 +17,7 @@ const Login = () => {
     setIsLoading(true);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://chess-game-five-eta.vercel.app/api/auth/login",
         userData,
         { withCredentials: true }
       );
