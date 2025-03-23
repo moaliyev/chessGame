@@ -46,24 +46,15 @@ const Game = () => {
         const {
           data,
         }: {
-          data: {
-            _id: string;
-            board: (Piece | null)[][];
-            black: string;
-            white: string;
-            isActive: boolean;
-            activeUser: string;
-          };
-        } = await axios.get(
-          `https://chess-game-five-eta.vercel.app/api/room/${roomId}`,
-          {
-            withCredentials: true,
-          }
-        );
+          data: GameData;
+        } = await axios.get(`http://localhost:5000/api/room/${roomId}`, {
+          withCredentials: true,
+        });
         setGameData(data);
         if (
-          data.black !== authUser.user._id ||
-          data.white !== authUser.user._id
+          !(
+            data.black === authUser.user._id || data.white === authUser.user._id
+          )
         )
           return navigate("/");
         if (!data.black || !data.white) setIsEnd(GameStatus.NOT_READY);
@@ -97,8 +88,6 @@ const Game = () => {
         setUser(user === Color.WHITE ? Color.BLACK : Color.WHITE);
       });
       socket.on("game_ready", () => setIsEnd(GameStatus.ONGOING));
-    } else {
-      navigate("/signup");
     }
   }, [authUser]);
 
@@ -167,7 +156,7 @@ const Game = () => {
               position={[firstIndex, secondIndex]}
               active={Boolean(
                 activeMoves.find(
-                  item => item[0] === firstIndex && item[1] === secondIndex
+                  (item) => item[0] === firstIndex && item[1] === secondIndex
                 )
               )}
               piece={piece ?? undefined}
