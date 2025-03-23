@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
@@ -18,15 +18,12 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://chess-game-mahammad.vercel.app/",
-    ],
+    origin: ["http://localhost:5173", "https://chess-game-front.vercel.app"],
   },
 });
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://chess-game-mahammad.vercel.app/"],
+  origin: ["http://localhost:5173", "https://chess-game-front.vercel.app"],
   optionsSuccessStatus: 200,
   credentials: true,
 };
@@ -41,7 +38,11 @@ app.use(express.static("public")); // serve static files
 app.use("/api/room", roomRouter);
 app.use("/api/auth", authRouter);
 
-server.listen(5000, () => {
+app.use("/", (req: Request, res: Response) => {
+  res.send("Salam");
+});
+
+server.listen(3000, () => {
   connectToMongoDB();
   console.log("Server running on 5000");
 });

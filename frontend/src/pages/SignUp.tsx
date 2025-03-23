@@ -22,7 +22,10 @@ const SignUp = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", userData);
+      await axios.post(
+        "https://chess-game-five-eta.vercel.app/api/auth/signup",
+        userData
+      );
       navigate("/signin");
     } catch (err: any) {
       if (err.response.data.error) toast.error(err.response.data.error);

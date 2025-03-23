@@ -30,7 +30,7 @@ const Cell: React.FC<PropType> = ({
         <div className={`cell ${count % 2 ? "green" : "white"}`}>
           {piece ? (
             <img
-              src={`http://localhost:5000/${piece.image}`}
+              src={`https://chess-game-five-eta.vercel.app/${piece.image}`}
               alt={piece.image.split(".")[0].split("/")[5]}
               onClick={() => handleClick(piece)}
             />

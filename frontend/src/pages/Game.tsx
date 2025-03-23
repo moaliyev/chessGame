@@ -75,7 +75,7 @@ const Game = () => {
 
   useEffect(() => {
     if (authUser?.user?._id) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://chess-game-five-eta.vercel.app", {
         query: {
           userId: authUser.user._id,
         },
